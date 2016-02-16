@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <title>iAmBored</title>  
+  
+  <link rel="stylesheet" href="lib/onsen/css/onsenui.css">  
+  <link rel="stylesheet" href="styles/app.css"/>
+  <link rel="stylesheet" href="styles/onsen-css-components-blue-basic-theme.css">  
+  <link rel="stylesheet" href="css/index.css">
+
+  <script src="lib/onsen/js/angular/angular.js"></script>    
+  <script src="lib/onsen/js/onsenui.js"></script>    
+  
+  <script src="cordova.js"></script>  
+  <script src="js/app.js"></script>  
+  <script>
+
+    ons.ready(function() {
+    });
+  </script>
+
+</head>
+
+<body>    
+
+  <ons-navigator title="Navigator" var="appNavigator">    
+    <ons-page>      
+        <ons-carousel swipeable overscrollable auto-scroll fullscreen var="carousel">
+          <ons-carousel-item style="background-color: gray;">
+            <div class="item-label">GRAY</div>
+          </ons-carousel-item>
+          <ons-carousel-item style="background-color: #085078;">
+            <div class="item-label">BLUE</div>
+          </ons-carousel-item>        
+          <ons-carousel-item style="background-color: #D38312;">
+            <div class="item-label">ORANGE</div>
+            <ons-button modifier="outline" onclick="appNavigator.pushPage('home',{animation: 'lift'})" id="getStarted">Get Started</ons-button>
+          </ons-carousel-item>
+          <ons-carousel-cover><div class="cover-label">Swipe left or right</div></ons-carousel-cover>
+        </ons-carousel>
+    </ons-page>   
+  </ons-navigator> 
+
+  <ons-template id="home">     
+    <ons-page>
+      <ons-sliding-menu
+                  main-page="first"
+                  menu-page="menu"       
+                  side="left"
+                  max-slide-distance="250px"
+                  swipe-target-width="25px"
+                  var="menu">
+      </ons-sliding-menu>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="first">
+      <ons-toolbar>
+        <div class="left">
+          <ons-toolbar-button onclick="menu.toggleMenu()">
+              <ons-icon icon="ion-navicon" style="font-size: 32px; width: 1em;"></ons-icon>
+          </ons-toolbar-button>
+        </div>
+        <div class="center">Welcome</div>
+      </ons-toolbar>
+
+      <p style="text-align: center; color: #999; padding-top: 100px;">First Page Contents</p>
+    </ons-page>
+  </ons-template> 
+
+  <ons-template id="menu">    
+      <ons-list>
+        <ons-toolbar>
+          <div class="center"> Menu </div>
+        </ons-toolbar>
+
+        <ons-list-header style="padding-top:5px;">Connect Via</ons-list-header>
+
+          <ons-list-item modifier="chevron">
+            <ons-icon icon="ion-social-facebook" size="20px"></ons-icon>
+            Facebook
+          </ons-list-item>
+          <ons-list-item modifier="chevron">
+            <ons-icon icon="ion-social-twitter" size="20px"></ons-icon>
+            Twitter
+          </ons-list-item>
+          <ons-list-item modifier="chevron">
+            <ons-icon icon="ion-social-googleplus" size="20px"></ons-icon>
+            Google 
+          </ons-list-item>       
+
+        <ons-list-header style="padding-top:5px;">Events</ons-list-header>
+
+          <ons-list-item modifier="chevron">
+            <ons-icon icon="ion-compose" size="20px"></ons-icon>
+            My Created Events
+            </ons-list-item>
+            <ons-list-item modifier="chevron">
+              <ons-icon icon="ion-pin" size="20px"></ons-icon>
+            Attended Events
+            </ons-list-item>
+
+         <ons-list-header style="padding-top:5px;">Settings</ons-list-header>
+
+            <ons-list-item modifier="chevron">
+              <ons-icon icon="fa-cog" size="20px"></ons-icon>
+              Preferences
+            </ons-list-item>
+            <ons-list-item modifier="chevron">
+              <ons-icon icon="ion-person" size="20px"></ons-icon>
+              Profile
+            </ons-list-item>
+            <ons-list-item modifier="chevron">
+              <ons-icon icon="ion-log-out" size="20px"></ons-icon>
+              Logout
+            </ons-list-item>
+
+      
+      
+      </ons-list>    
+  </ons-template>
+
+</body>  
+</html>
