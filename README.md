@@ -1,3 +1,4 @@
 # hybrid-mobile-applications
 Hybrid Mobile Applications using Apache Cordova
-1
+
+iAmBored: a OnSenUI demo project. https://onsen.io/
