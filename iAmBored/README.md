@@ -2,7 +2,8 @@ Trying OnSenUI
 
 https://onsen.io/
 
-Pros:
+**Pros:**
+
 1. Well documented.
 
 2. Awesome clean UI.
@@ -11,7 +12,8 @@ Pros:
 
 4. Theme Roller makes things easy.
 
-Cons:
+**Cons:**
+
 1. Doesn't look native on android devices.
 
 2. Conflicts a lot with jQuery.
@@ -22,7 +24,8 @@ Cons:
 
 5. Not much community/stackoverflow support.
 
-Final Verdict:
+**Final Verdict:**
+
 1. Use if you want native iOS experience through hybrid.
 
 2. Will improve with time I feel.  
