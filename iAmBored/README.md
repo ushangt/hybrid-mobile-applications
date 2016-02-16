@@ -17,4 +17,4 @@ Cons:
 
 Final Verdict:
 1. Use if you want native iOS experience through hybrid.
-2. Will improve with time I feel. 
+2. Will improve with time I feel.  
