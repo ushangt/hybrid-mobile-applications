@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        
+        <!-- CSS Files -->
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.0.css"/>    
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        
+    </head>     
+ <body>
+
+ <!--Welcome screen
+ <div id="welcomeScreen" data-theme="z" data-role="page" class="blue-bg">
+     <div class="logo"><img src="images/logo.png" width="175" height="190" alt="fishtrap"></div>
+ </div>
+ -->
+ <!-- Login Screen -->
+  <div id="loginScreen" data-theme="z" data-role="page" class="blue-bg login-screen">     
+	<div data-role = "content">
+	<div align="center"><img src="images/logo-small.png" width="160" height="70" alt="logo" style="margin-top: 30px"></div>	
+  		
+		<input type="text" id = "login_username" placeholder = "Username" class="username" required></input>				
+		<input type="password" id = "login_password" placeholder = "Password" class="password" required></input>		
+		
+		<a href="" data-role="button" id="login_btn" class="login_button">Login</a> 
+		<div align="center">
+			<a href="#forgotPassword" id="forgot_btn" class="forgot_button">Forgot Password ?</a>
+		</div>
+		
+		<div align="center" class="registration">   
+				<span class="forgot_button" style="margin-bottom:-10px;">New User ?</span>   
+         	<a data-role="button" id="register_btn" class="register_button" href = "" onClick = 'navigateTo("regScreen")'>Register</a>
+    	</div>		
+	</div>    
+ </div>
+ 
+ <!--  Registration Screen -->
+ <div id="regScreen" data-theme="z" data-role="page" class="blue-bg form-screen">	
+    <div data-role = "content">
+    	<div align="center">
+    		<img src="images/logo-small.png" width="160" height="70" alt="logo" style="margin-top: -10px;margin-left: -20px;;">
+    	</div>
+    	<div class="registration_form">    	
+	  		<div class="form-element">
+				<input type="text" id = "full_name" placeholder = "Enter your Name" class="input" required></input>				 
+			</div>
+			<div class="form-element">
+				<input type="email" id = "email_id" placeholder = "Enter your Email ID" class="input" required></input>  				
+			</div>
+			<div class="form-element"> 
+				<input type="text" id = "username" placeholder = "Choose your Username" class="input" required></input>				
+			</div> 
+			<div class="form-element">
+				<input type="password" id = "password" placeholder = "Enter your Password" class="input" required></input>				
+			</div>
+			<div class="form-element">
+				<input type="password" id = "confirm_password" placeholder = "Confirm your Password" class="input" required></input>				
+			</div>
+			<div class="form-element">
+				<select name="country" id="country" class="input">
+					<option value=""> Please Select a Country </option>
+					<option value="1"> India </option>
+				</select>								
+			</div>
+		</div>
+		<div class="accept" align="center">
+			<input type="checkbox" name="accept_box" id="accept_box">
+    		<label for="accept_box">I agree to the <b>Terms & Conditions</b></label> 
+		</div>  	
+		<div class="registration_buttons">
+			<a href="" data-role="button" id="regScreen_cancel" class="cancel_btn" onclick="navigateTo('loginScreen','fade')">Cancel</a>
+			<a href="" data-role="button" id="regScreen_save" class="reg_btn">Register</a>			
+		</div>  	
+    </div>              
+ </div>
+ 
+<!-- Forgot Password Screen -->
+<div id="forgotPassword" data-theme="z" data-role="page" class="blue-bg login-screen">     
+	<div data-role = "content">
+		<div align="center"><img src="images/logo-small.png" width="160" height="70" alt="logo" style="margin-top: 30px"></div>
+		<input type="text" id ="forgot_userId" placeholder = "Enter your Username" required></input>					
+		<input type="text" id ="forgot_userEmail" placeholder = "Enter your Email ID" required></input>										
+		<a href="" data-role="button" id="forgotPwd_btn" class="forgotPwd_btn">Submit</a> 
+		<div align="center" class="registration">   
+			<span class="forgot_button" style="margin-bottom:-10px;">Got the New Password ?</span>   
+			<a data-role="button" id="register_btn" class="register_button" href = "" onClick = 'navigateTo("loginScreen")'>Login</a>
+	   	</div>		
+	</div>    
+</div>
+	
+ <!--  Region Screen -->
+ <div id="regionScreen" data-theme="z" data-role="page" class="light-bg region_screen"> 		
+	<div class="app_header">
+		<span class="header_logo">
+			<img src="images/logo-small.png" height="60px" alt="logo"/>
+		</span>		
+		<span class="drawer">
+			<a href="#side-panel-regionscreen"></a>
+		</span>		
+	</div>	
+    <div data-role = "content" style="clear:both;">
+		<select name="country" id="country" style="width:100%" class="region_select">			
+			<option value="1"> Mumbai (India) </option>
+		</select>	
+		<div id="map_canvas">
+			
+		</div>										
+    </div>  
+    <div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="side-panel-regionscreen" data-theme="b" class="nav_drawer">   
+	    <ul data-role="listview" data-theme="z" data-divider-theme="z" class="nav-search">
+	      <li data-icon="delete" style="nav_head" class="list_head">
+	      	<a href="#" data-rel="close" class="close_btn"><label class="hi_user"> Hi, user </label></a> 
+	      </li>
+	      <li> 
+	      	<a href="#settingsScreen"><span><img src="images/ic_settings.png"/></span><label>Settings</label></a>
+	      </li>
+	      <li>
+	      	 <a href="#regionScreen"><span><img src="images/ic_region.png"/></span><label>Change Region</label></a> 
+	      </li>
+	      <li> 
+	      	<a href=""><span><img src="images/ic_rating.png"/></span><label>Rate Us</label></a> 
+	      </li>
+	      <li> 
+	      	<a href="" id="logout" onclick="logout()"><span><img src="images/ic_logout.png"/></span><label>Logout</label></a> 
+	      </li>    
+	    </ul>	    
+	</div>   
+ </div>
+ 
+ <!-- Home Screen/ Probability Screen -->
+	<div id="homeScreen" data-theme="z" data-role="page" class="light-bg home-screen" class="top-style">
+		<div class="app_header" style="position: fixed; z-index: 9999; top: 0;">
+			<span class="header_logo">
+				<img src="images/logo-small.png" height="60px" alt="logo" onclick="window.history.back()"/>
+			</span>
+			<span class="drawer">
+				<a href="#side-panel-homescreen"></a>
+			</span>
+			<span class="refresh_btn">
+		       	<a></a>
+			</span>
+		</div>
+		
+		<div data-role = "content" style="clear:both;" class="main_body">
+	   		<div class="weather_widget">
+				<div class="row_one">    	
+					<span class="weather_icon"></span>
+					<span class="weather_factors">
+						<img src="images/Weather/ic_pressure.png"> <b> Pressure: </b> <span class="pressure"></span><br>
+						<img src="images/Weather/ic_wind.png"> <b> Wind: </b><span class="wind"></span> <br>
+						<img src="images/Weather/ic_humidity.png"> <b> Humidity: </b><span class="humidity"></span><br>
+					</span>
+				</div>
+		   		<br style="clear:both;">
+			   	<div class="row_two">
+			   		<div class="block1">
+			   			<span class="temperature"></span>    		
+			    		<label class="city_date">
+			    			<span class="city" style="display:block;">
+			    				<b>Mumbai</b>
+			    			</span>
+			    			<span class="date">	    				
+			    			</span>
+			   			</label>
+			   			<!-- br style="clear:both;">
+			   			<span class="tides"> 
+				   			High Tide: <span class="high_tide"> 11am | 11pm </span><br/>
+				   			Low Tide : <span class="low_tide"> 11am | 11pm </span>
+				  		</span -->        			 		
+			   		</div>    		
+			   		<div class="block2">
+			   		</div>
+			   		
+			   	</div>     	  		
+		    </div>
+		
+			<div style="position: absolute; top: 280px; bottom: 30px; clear:both" class="main_fish">
+			
+				<div class="fish">
+					<div class="fish_widget">
+						<div class='fish_widget_row'>
+				            
+				                <!-- <img src="images/loader.gif"> -->
+				                
+				                 <div class="individual_fish">        
+				                    <span class="fish_image">
+				                        <img src="images/fish_1.jpg" class="fish_thumb">
+				                    </span>
+				                    <span class="color_band_medium "></span>
+				                    <span class="fish_name">
+				                        Bombay ..
+				                    </span>               
+				                 </div>
+				                <div class="individual_fish">        
+				                    <span class="fish_image">
+				                        <img src="images/fish_1.jpg" class="fish_thumb">
+				                    </span>
+				                    <span class="color_band_medium ">
+				                    </span>
+				                    <span class="fish_name">
+				                        Bombay ..
+				                    </span>               
+				                 </div>
+				                <div class="individual_fish">        
+				                    <span class="fish_image">
+				                        <img src="images/fish_1.jpg" class="fish_thumb">
+				                    </span>
+				                    <span class="color_band_medium ">
+				                    </span>
+				                    <span class="fish_name">
+				                        Bombay ..
+				                    </span>               
+				                 </div>
+				          </div>
+		         		<div class='fish_widget_row'>
+				           
+				                <!-- <img src="images/loader.gif"> -->
+				                
+				                 <div class="individual_fish">        
+				                    <span class="fish_image">
+				                        <img src="images/fish_1.jpg" class="fish_thumb">
+				                    </span>
+				                    <span class="color_band_medium "></span>
+				                    <span class="fish_name">
+				                        Bombay ..
+				                    </span>               
+				                 </div>
+				                <div class="individual_fish">        
+				                    <span class="fish_image">
+				                        <img src="images/fish_1.jpg" class="fish_thumb">
+				                    </span>
+				                    <span class="color_band_medium ">
+				                    </span>
+				                    <span class="fish_name">
+				                        Bombay ..
+				                    </span>               
+				                 </div>
+				                <div class="individual_fish">        
+				                    <span class="fish_image">
+				                        <img src="images/fish_1.jpg" class="fish_thumb">
+				                    </span>
+				                    <span class="color_band_medium ">
+				                    </span>
+				                    <span class="fish_name">
+				                        Bombay ..
+				                    </span>               
+				                 </div>
+				          </div>
+				      </div>	
+		                
+					</div>
+	            </div>	
+			
+								
+	    	
+				
+			<div class="probability_meter">
+		    	Catch Probability: <span class="high">High</span> 
+		    					   <span class="medium">Medium</span> 
+		    					   <span class="low">Low</span> 
+		    	<input type="hidden" class="wetherInfo">
+				<input type="hidden" class="fishProb"> 
+		   </div>
+		   
+	    </div>
+	    
+		<div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="side-panel-homescreen" data-theme="b" class="nav_drawer">   
+		    <ul data-role="listview" data-theme="z" data-divider-theme="z" class="nav-search">
+		      <li data-icon="delete" style="nav_head" class="list_head">
+		      	<a href="#" data-rel="close" class="close_btn"><label class="hi_user"> Hi, user </label></a> 
+		      </li>
+		      <li> 
+		      	<a href="#settingsScreen"><span><img src="images/ic_settings.png"/></span><label>Settings</label></a>
+		      </li>
+		      <li>
+		      	 <a href="#regionScreen"><span><img src="images/ic_region.png"/></span><label>Change Region</label></a> 
+		      </li>
+		      <li> 
+		      	<a href=""><span><img src="images/ic_rating.png"/></span><label>Rate Us</label></a> 
+		      </li>
+		      <li> 
+		      	<a href="" id="logout" onclick="logout()"><span><img src="images/ic_logout.png"/></span><label>Logout</label></a> 
+		      </li>    
+		    </ul>	    
+		</div>   
+		    	   
+   	</div>     
+
+	<!-- Fish Details Screen -->
+	<div id="fishDetails" data-theme="z" data-role="page" class="light-bg details-screen">   
+	  	<div class="app_header">
+			<span class="header_logo">
+				<img src="images/logo-small.png" height="60px" alt="logo" onclick="window.history.back()"/>
+			</span>
+			<span class="drawer">
+				<a href="#side-panel-fishdetails"></a>
+			</span>		
+		</div> 
+		<div data-role = "content" style="clear:both;" class="main_body">
+		    <div data-role="tabs" class="tabs_style">
+			  <div data-role="navbar">
+				    <ul>		              
+				      <li><a href="#fishDetails" data-ajax="false" style="border-right: 1px solid #AAAEAF" class="tab_2"></a></li>
+				      <li><a href="#catchingInstructions" data-ajax="false" class="tab_3" style="border-right: 1px solid #AAAEAF;"></a></li>
+				      <li><a href="#map" data-ajax="false"  class="tab_1"></a></li>              		    
+				    </ul>
+			  </div>
+		      <!--Div 1-->
+		      <div id="map" class="fish_features div_height">
+		      		<div id="fish_map">
+		      		</div>
+		      </div>
+		      <!--Div 2-->
+			  <div class="fish_features div_height" id="fishDetails">
+				    <div class="fish_image_name">
+				    	<span class="fish_image_big">
+				    		
+				    	</span>
+				    	<span class="fish_name_probability">
+				    		<span class="fish_name">
+				    			
+				    		</span>
+				    		<span class="fish_probability_bar">
+				    			<span class="probability_counter_high">
+				    			
+				    			</span>
+				    		</span>
+				    		<span class="fish_probability_text">
+				    			
+				    		</span>	    		
+				    	</span>
+				    </div>
+				    <div class="fish_attributes">
+				    	<ul>
+				    		<li><label>Size:</label><label class="size"></label></li>
+				    		<li><label>Mass:</label><label class="mass"></label></li>
+				    		<li><label>Length:</label><label class="length"></label></li>		             
+				    	</ul>	    	
+				    </div>
+			   </div> 
+			   <!-- Div 3 -->
+			   <div id="catchingInstructions" class="fish_features div_height">	   
+				   	<div>
+				   		<h3>Tips for Catching:</h3>
+				   		<span  class="specific_instructions"></span>			   		
+				   	</div>
+				   	<div>
+				   		<h3>Baits to be used:</h3>
+				   		<span class="baits"></span>
+				   	</div>
+				   	<div>
+				   		<h3>Ropes & Nets:</h3>
+				   		<span class="ropes_nets"></span>
+				   	</div>
+				</div>	   
+		 	</div>
+		</div>
+		<div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="side-panel-fishdetails" data-theme="b" class="nav_drawer">   
+		    <ul data-role="listview" data-theme="z" data-divider-theme="z" class="nav-search">
+		      <li data-icon="delete" style="nav_head" class="list_head">
+		      	<a href="#" data-rel="close" class="close_btn"><label class="hi_user"> Hi, user </label></a> 
+		      </li>
+		      <li> 
+		      	<a href="#settingsScreen"><span><img src="images/ic_settings.png"/></span><label>Settings</label></a>
+		      </li>
+		      <li>
+		      	 <a href="#regionScreen"><span><img src="images/ic_region.png"/></span><label>Change Region</label></a> 
+		      </li>
+		      <li> 
+		      	<a href=""><span><img src="images/ic_rating.png"/></span><label>Rate Us</label></a> 
+		      </li>
+		      <li> 
+		      	<a href="" id="logout" onclick="logout()"><span><img src="images/ic_logout.png"/></span><label>Logout</label></a> 
+		      </li>    
+		    </ul>	    
+		</div>   
+	</div> 	    
+ 
+	 <!-- Search Screen 
+	 <div id="searchScreen" data-theme="z" data-role="page" class="light-bg search-screen form-screen">   
+	  	<div class="app_header">
+			<span class="header_logo">
+				<img src="images/logo-small.png" height="60px" alt="logo"/>
+			</span>
+			<span class="drawer">
+				<a href="#side-panel-searchscreen"></a>
+			</span>
+			<span class="search_icon" page="search">
+				<a></a>
+			</span>
+		</div> 
+		<div data-role = "content" style="clear:both;">	
+			<div class="registration_form" >    	
+		  		<div class="form-element">
+					<input type="text" id = "search_text" placeholder = "Type name of fish.." class="input search_input" required></input>
+	            </div>	
+			</div>
+	        <div align="center" class="registration">   
+	         	<a data-role="button" id="search_btn" class="search_button" href = "">Search</a>
+	    	</div>
+	    	<div class="search_results">
+	    		<div class="individual_result">
+	    			<span class="result_image">
+	    				<img src="http://192.168.1.50/fishtrap/uploads/black_pomfret.jpg"/>
+	    			</span>
+	    			<span class="result_name_location">
+	    				<b>Black Pomfret</b><br>
+	    				Gorai, Mumbai, India
+	    			</span>
+	    		</div>
+	    		<div class="individual_result">
+	    			<span class="result_image">
+	    				<img src="http://192.168.1.50/fishtrap/uploads/black_pomfret.jpg"/>
+	    			</span>
+	    			<span class="result_name_location">
+	    				<b>Black Pomfret</b><br>
+	    				Gorai, Mumbai, India
+	    			</span>
+	    		</div>
+	    	</div>
+		</div>
+		<div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="side-panel-searchscreen" data-theme="b" class="nav_drawer">   
+		    <ul data-role="listview" data-theme="z" data-divider-theme="z" class="nav-search">
+		      <li data-icon="delete" style="background-color:#444;margin-top: 60px;" class="list_head">
+		      	<a href="#" data-rel="close" class="close_btn"><label class="hi_user"> Hi, user </label></a> 
+		      </li>
+		      <li> 
+		      	<a href="#settingsScreen"><span><img src="images/ic_settings.png"/></span><label>Settings</label></a>
+		      </li>
+		      <li>
+		      	 <a href="#regionScreen"><span><img src="images/ic_region.png"/></span><label>Change Region</label></a> 
+		      </li>
+		      <li> 
+		      	<a href=""><span><img src="images/ic_rating.png"/></span><label>Rate Us</label></a> 
+		      </li>
+		      <li> 
+		      	<a href="" id="logout"><span><img src="images/ic_logout.png"/></span><label>Logout</label></a> 
+		      </li>    
+		    </ul>	    
+		</div>  
+	</div>
+	-->
+	
+	<!--  Settings Screen -->
+	<div id="settingsScreen" data-theme="z" data-role="page" class="light-bg form-screen">	
+		<div class="app_header">
+		<span class="header_logo">
+			<img src="images/logo-small.png" height="60px" alt="logo" onclick="window.history.back()"/>
+		</span>
+		<span class="drawer">
+			<a href="#side-panel-settingscreen"></a>
+		</span>		
+		</div> 
+	   	<div data-role = "content">
+		  	<div align="center">
+		  		<h2 class="settings-title" align="center"> Update Profile </h2>
+		  	</div>
+		  	<div class="registration_form">    	
+		 		<div class="form-element">
+					<input type="text" id = "full_name" placeholder = "Enter your name" class="input" required></input>				 
+				</div>
+				<div class="form-element">
+					<input type="email" id = "email_id" placeholder = "Enter your Email ID" class="input" required></input>  				
+				</div>			
+				<div class="form-element">
+					<input type="password" id = "password" placeholder = "Enter your password" class="input" required></input>				
+				</div>
+				<div class="form-element">
+					<input type="password" id = "confirm_password" placeholder = "Confirm your password" class="input" required></input>				
+				</div>			
+			</div>		
+			<div class="registration_buttons">
+				<a href="" data-role="button" id="setting_cancel" class="cancel_btn" onclick="window.history.back()">Cancel</a>
+				<a href="" data-role="button" id="setting_save" class="reg_btn">Submit</a>			
+			</div>  	
+	  	</div> 
+		<div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="side-panel-settingscreen" data-theme="b" class="nav_drawer">   
+		    <ul data-role="listview" data-theme="z" data-divider-theme="z" class="nav-search">
+		      <li data-icon="delete" style="nav_head" class="list_head">
+		      	<a href="#" data-rel="close" class="close_btn"><label class="hi_user"> Hi, user </label></a> 
+		      </li>
+		      <li> 
+		      	<a href="#settingsScreen"><span><img src="images/ic_settings.png"/></span><label>Settings</label></a>
+		      </li>
+		      <li>
+		      	 <a href="#regionScreen"><span><img src="images/ic_region.png"/></span><label>Change Region</label></a> 
+		      </li>
+		      <li> 
+		      	<a href=""><span><img src="images/ic_rating.png"/></span><label>Rate Us</label></a> 
+		      </li>
+		      <li> 
+		      	<a href="" id="logout" onclick="logout()"><span><img src="images/ic_logout.png"/></span><label>Logout</label></a> 
+		      </li>    
+		    </ul>	    
+		</div>             
+	</div>
+
+	<!-- JQuery Mobile Files -->        
+	<script type="text/javascript" src="js/jquery_mobile_js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery_mobile_js/jquery.mobile-1.4.0.min.js"></script>
+	 
+	<!-- Google Maps -->
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>     
+	     
+	<!-- linking js files -->       
+	<script type="text/javascript" src="cordova.js"></script>        
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/fastclick.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/webintents.js"></script>        
+	<script type="text/javascript" src="js/Toast.js"></script>                                  
+	<script type="text/javascript">
+		app.initialize();          
+	</script>
+</body>
+</html>
